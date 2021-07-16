@@ -1,5 +1,5 @@
 # Train an RL Agent to Collect Bananas
-## Udacity Deep Reinforcement Learning Nanodegree-Project 1: Navigation
+## Udacity Deep Reinforcement Learning Nanodegree Project 1: Navigation
 
 ## Project's goal
 
@@ -7,18 +7,23 @@ In this project, **the goal is to train an agent to navigate a virtual world and
 
 ![In Project 1, train an agent to navigate a large world.](images/navigation.gif)
 
-### Approach
-Here are the high-level steps taken in building an agent that solves this environment.
+## Table of Contents
+1. [Description of the Environment](Description of the Environment)
+2. [Getting Started](Getting_Started)
+   * [Dependencies](Dependencies)
+   * [Installing](Installing)
+   * [Executing Program](Executing_Program)
+   * [File Description](File_Description)
+3.[Establish baseline using a random action policy](Establish baseline using a random action policy)
+4.[Description of algorithms used](Description of algorithms used)
+5.[Run experiments to measure agent performance](Run experiments to measure agent performance)
+6.[Select best performing agent and capture video of it navigating the environment](Select best performing agent and capture video of it navigating the environment)
+7. [Authors](Authors)
+8. [License](License)
+9. [Acknowledgement](Acknowledgement)
 
-1. Explore the Environment details
-1. Establish baseline using a random action policy.
-1. Agent Implement learning algorithm.
-1. Run experiments to measure agent performance.
-1. Select best performing agent and capture video of it navigating the environment.
 
-
-
-## Environment details
+## Description of the Environment <a name="Description of the Environment"></a>
 
 The environment is based on [Unity ML-agents](https://github.com/Unity-Technologies/ml-agents)
 
@@ -39,8 +44,38 @@ Given this information, the agent has to learn how to best select actions. Four 
 
 The task is episodic, and **in order to solve the environment, the agent must get an average score of +16 over 100 consecutive episodes.**
 
+## Getting Started <a name="Getting_Started"></a>
 
-### 2. Establish Baseline
+### Dependencies <a name=" Dependencies"></a>
+Python 3.5+ <br>
+Machine Learning Libraries: NumPy, SciPy, Pandas, Sciki-Learn <br>
+Natural Language Process Libraries: NLTK <br>
+SQLlite Database Libraqries: SQLalchemy <br>
+Model Loading and Saving Library: Pickle <br>
+Web App and Data Visualization: Flask, Plotly <br>
+
+### Installing <a name="Installing"></a>
+To clone the git repository:
+
+```[git clone debjani-bhowmick/p1-drl-navigation)](https://github.com/debjani-bhowmick/p1-drl-navigation)```
+
+### Executing Program <a name="Executing_Program"></a>
+You can run the `Navigation.ipynb` notebook in the project's directory to train model and save the model.
+
+
+### File Description <a name=" File_Description"></a>
+This project structure is divided into three directories:
+
+
+<b> models/model.py:</b> 
+
+<b> agent/agent.py:</b>
+
+<b> Navigation.ipynb:</b> notebook that will help you understand how the agent works step by step using different algorithms
+
+
+### Establish Baseline <a name="Establish Baseline"></a>
+
 Before building an agent that learns, I started by testing an agent that selects actions (uniformly) at random at each time step.
 
 ```python
@@ -64,7 +99,7 @@ print("Score: {}".format(score))
 Running this agent I got a score of zero. Obviously, if the agent needs to achieve an average score of 16 over 100 consecutive episodes, then choosing actions at random won't work.
 
 
-## Agent Implementation
+## Description of algorithms used <a name="Description of algorithms used"></a>
 
 ### Preparation 
 The scores are distributed like follows: +1 each time the agent collects a yellow banana and -1 when it collects blue ones. The reinforcement learning system actions are directed to wards maximizing cumulative scores thus, the agent ends up learning that, to achieve this, it’s better to avoid the blue ones and collect more yellows, by changing its actions on certain states.
@@ -88,11 +123,11 @@ To discover an optimal policy, I setup a Q-function. The Q-function calculates t
 
 We can then define our optimal policy `π*` as the action that maximizes the Q-function for a given state across all possible states. The optimal Q-function `Q*(s,a)` maximizes the total expected reward for an agent starting in state `s` and choosing action `a`, then following the optimal policy for each subsequent state.
 
-<img src="assets/optimal-policy-equation.png" width="47%" align="top-left" alt="" title="Optimal Policy Equation" />
+<img src="images/optimal-policy-equation.png" width="47%" align="top-left" alt="" title="Optimal Policy Equation" />
 
 In order to discount returns at future time steps, the Q-function can be expanded to include the hyperparameter gamma `γ`.
 
-<img src="assets/optimal-action-value-function.png" width="67%" align="top-left" alt="" title="Optimal Action Value Function" />
+<img src="images/optimal-action-value-function.png" width="67%" align="top-left" alt="" title="Optimal Action Value Function" />
 
 
 #### Epsilon Greedy Algorithm
@@ -102,13 +137,13 @@ To address this, I implemented an **𝛆-greedy algorithm**. This algorithm allo
 
 Furthermore, the value of epsilon is purposely decayed over time, so that the agent favors exploration during its initial interactions with the environment, but increasingly favors exploitation as it gains more experience. The starting and ending values for epsilon, and the rate at which it decays are three hyperparameters that are later tuned during experimentation.
 
-You can find the 𝛆-greedy logic implemented as part of the `agent.act()` method [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L66) in `agent.py` of the source code.
+You can find the 𝛆-greedy logic implemented as part of the `agent.act()` method [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/agent/agent.py#L66) in `agent.py` of the source code.
 
 
 #### Deep Q-Network (DQN)
 With Deep Q-Learning, a deep neural network is used to approximate the Q-function. Given a network `F`, finding an optimal policy is a matter of finding the best weights `w` such that `F(s,a,w) ≈ Q(s,a)`.
 
-The neural network architecture used for this project can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/model.py#L5) in the `model.py` file of the source code. The network contains three fully connected layers with 64, 64, and 4 nodes respectively. Testing of bigger networks (more nodes) and deeper networks (more layers) did not produce better results.
+The neural network architecture used for this project can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/model.py#L5) in the `model.py` file of the source code. The network contains three fully connected layers with 64, 64, and 4 nodes respectively. Testing of bigger networks (more nodes) and deeper networks (more layers) did not produce better results.
 
 As for the network inputs, rather than feeding-in sequential batches of experience tuples, I randomly sample from a history of experiences using an approach called Experience Replay.
 
@@ -120,115 +155,71 @@ Each experience is stored in a replay buffer as the agent interacts with the env
 
 Also, experience replay improves learning through repetition. By doing multiple passes over the data, our agent has multiple opportunities to learn from a single experience tuple. This is particularly useful for state-action pairs that occur infrequently within the environment.
 
-The implementation of the replay buffer can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L133) in the `agent.py` file of the source code.
+The implementation of the replay buffer can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/agent/agent.py#L133) in the `agent.py` file of the source code.
 
 
 #### Double Deep Q-Network (DDQN)
 One issue with Deep Q-Networks is they can overestimate Q-values (see [Thrun & Schwartz, 1993](https://www.ri.cmu.edu/pub_files/pub1/thrun_sebastian_1993_1/thrun_sebastian_1993_1.pdf)). The accuracy of the Q-values depends on which actions have been tried and which states have been explored. If the agent hasn't gathered enough experiences, the Q-function will end up selecting the maximum value from a noisy set of reward estimates. Early in the learning process, this can cause the algorithm to propagate incidentally high rewards that were obtained by chance (exploding Q-values). This could also result in fluctuating Q-values later in the process.
 
-<img src="assets/overestimating-Q-values.png" width="50%" align="top-left" alt="" title="Overestimating Q-values" />
+<img src="images/overestimating-Q-values.png" width="50%" align="top-left" alt="" title="Overestimating Q-values" />
 
 We can address this issue using Double Q-Learning, where one set of parameters `w` is used to select the best action, and another set of parameters `w'` is used to evaluate that action.  
 
-<img src="assets/DDQN-slide.png" width="40%" align="top-left" alt="" title="DDQN" />
+<img src="images/DDQN-slide.png" width="40%" align="top-left" alt="" title="DDQN" />
 
-The DDQN implementation can be found [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/agent.py#L96) in the `agent.py` file of the source code.
+The DDQN implementation can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/agent/agent.py#L96) in the `agent.py` file of the source code.
 
 
 #### Dueling Agents
 Dueling networks utilize two streams: one that estimates the state value function `V(s)`, and another that estimates the advantage for each action `A(s,a)`. These two values are then combined to obtain the desired Q-values.  
 
-<img src="assets/dueling-networks-slide.png" width="60%" align="top-left" alt="" title="DDQN" />
+<img src="images/dueling-networks-slide.png" width="60%" align="top-left" alt="" title="DDQN" />
 
 The reasoning behind this approach is that state values don't change much across actions, so it makes sense to estimate them directly. However, we still want to measure the impact that individual actions have in each state, hence the need for the advantage function.
 
-The dueling agents are implemented within the fully connected layers [here](https://github.com/tommytracey/DeepRL-P1-Navigation/blob/master/model.py#L21) in the `model.py` file of the source code.
-
-### Algorithm
-
-![Deep Q-Learning algorithm from Udacity course](./images/DQN.png)
-
-This algorithm screenshot is taken from the [Deep Reinforcement Learning Nanodegree course](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893)
+The dueling agents are implemented within the fully connected layers [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/model.py#L21) in the `model.py` file of the source code.
 
 
-### Code implementation
+### Model parameters and results
 
-The code used here is derived from the "Lunar Lander" tutorial from the [Deep Reinforcement Learning Nanodegree](https://www.udacity.com/course/deep-reinforcement-learning-nanodegree--nd893), and has been slightly adjusted for being used with the banana environment.
-
-The code consist of :
-
-- model.py : In this python file, a PyTorch QNetwork class is implemented. This is a regular fully connected Deep Neural Network using the [PyTorch Framework](https://pytorch.org/docs/0.4.0/). This network will be trained to predict the action to perform depending on the environment observed states. This Neural Network is used by the DQN agent and is composed of :
-  - the input layer which size depends of the state_size parameter passed in the constructor
-  - 2 hidden fully connected layers of 1024 cells each
-  - the output layer which size depends of the action_size parameter passed in the constructor
-- dqn_agent.py : In this python file, a DQN agent and a Replay Buffer memory used by the DQN agent) are defined.
-  - The DQN agent class is implemented, as described in the Deep Q-Learning algorithm. It provides several methods :
-    - constructor : 
-      - Initialize the memory buffer (*Replay Buffer*)
-      - Initialize 2 instance of the Neural Network : the *target* network and the *local* network
-    - step() : 
-      - Allows to store a step taken by the agent (state, action, reward, next_state, done) in the Replay Buffer/Memory
-      - Every 4 steps (and if their are enough samples available in the Replay Buffer), update the *target* network weights with the current weight values from the *local* network (That's part of the Fixed Q Targets technique)
-    - act() which returns actions for the given state as per current policy (Note : The action selection use an Epsilon-greedy selection so that to balance between *exploration* and *exploitation* for the Q Learning)
-    - learn() which update the Neural Network value parameters using given batch of experiences from the Replay Buffer. 
-    - soft_update() is called by learn() to softly updates the value from the *target* Neural Network from the *local* network weights (That's part of the Fixed Q Targets technique)
-  - The ReplayBuffer class implements a fixed-size buffer to store experience tuples  (state, action, reward, next_state, done) 
-    - add() allows to add an experience step to the memory
-    - sample() allows to randomly sample a batch of experience steps for the learning       
-- DQN_Banana_Navigation.ipynb : This Jupyter notebooks allows to train the agent. More in details it allows to :
-  - Import the Necessary Packages 
-  - Examine the State and Action Spaces
-  - Take Random Actions in the Environment (No display)
-  - Train an agent using DQN
-  - Plot the scores
-
-### DQN parameters and results
-
-The DQN agent uses the following parameters values (defined in dqn_agent.py)
+The agent uses the following parameters values (defined in dqn_agent.py)
 
 ```
 BUFFER_SIZE = int(1e5)  # replay buffer size
-BATCH_SIZE = 64         # minibatch size 
-GAMMA = 0.995           # discount factor 
+BATCH_SIZE = 64         # minibatch size
+GAMMA = 0.99            # discount factor
+LR = 5e-4               # learning rate
 TAU = 1e-3              # for soft update of target parameters
-LR = 5e-4               # learning rate 
-UPDATE_EVERY = 4        # how often to update the network
+UPDATE_EVERY = 4 
+Optimizer : Adam
 ```
 
-The Neural Networks use the following architecture :
+The Neural Networks use the following architecture (defined in model.py):
 
 ```
-Input nodes (37) -> Fully Connected Layer (1024 nodes, Relu activation) -> Fully Connected Layer (1024 nodes, Relu activation) -> Ouput nodes (4)
+Input nodes (37) -> Fully Connected Layer (64 nodes, Relu activation) -> Fully Connected Layer (64 nodes, Relu activation) -> Ouput nodes (4)
 ```
 
-The Neural Networks use the Adam optimizer with a learning rate LR=5e-4 and are trained using a BATCH_SIZE=64
 
 Given the chosen architecture and parameters, our results are :
 
-![Training logs](images/training_logs.png)
+### 4. Run Experiments:
 
-![Score evolution during the training](images/score_plot.png)
+Now that the various components of our algorithm are in place, it's time to measure the agent's performance within the Banana environment. Performance is measured by the fewest number of episodes required to solve the environment.
 
-**These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13, and in 1023 episodes only** (In comparison, according to Udacity's solution code for the project, their agent was benchmarked to be able to solve the project in fewer than 1800 episodes)
+The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
 
-### Ideas for future work
+### 5. Select best performing agent
 
-As discussed in the Udacity Course, a further evolution to this project would be to train the agent directly from the environment's observed raw pixels instead of using the environment's internal states (37 dimensions)
+The best performing agents were able to solve the environment in 200-250 episodes. While this set of agents included ones that utilized Double DQN and Dueling DQN, ultimately, the top performing agent was a simple DQN with replay buffer.
 
-To do so a [Convolutional Neural Network](https://en.wikipedia.org/wiki/Convolutional_neural_network) would be added at the input of the network in order to process the raw pixels values (after some little preprocessing like rescaling the image size, converting RGB to gray scale, ...)
+![Score evolution during the training](images/DDQN_RB.png)
 
-Other enhancements might also be implemented to increase the performance of the agent:
-- [Double DQN](https://arxiv.org/abs/1509.06461)
-> The popular Q-learning algorithm is known to overestimate action values under certain conditions. It was not previously known whether, in practice, such overestimations are common, whether they harm performance, and whether they can generally be prevented. In this paper, we answer all these questions affirmatively. In particular, we first show that the recent DQN algorithm, which combines Q-learning with a deep neural network, suffers from substantial overestimations in some games in the Atari 2600 domain. We then show that the idea behind the Double Q-learning algorithm, which was introduced in a tabular setting, can be generalized to work with large-scale function approximation. We propose a specific adaptation to the DQN algorithm and show that the resulting algorithm not only reduces the observed overestimations, as hypothesized, but that this also leads to much better performance on several games.
-- [Dueling DQN](https://arxiv.org/abs/1511.06581)
-> In recent years there have been many successes of using deep representations in reinforcement learning. Still, many of these applications use conventional architectures, such as convolutional networks, LSTMs, or auto-encoders. In this paper, we present a new neural network architecture for model-free reinforcement learning. Our dueling network represents two separate estimators: one for the state value function and one for the state-dependent action advantage function. The main benefit of this factoring is to generalize learning across actions without imposing any change to the underlying reinforcement learning algorithm. Our results show that this architecture leads to better policy evaluation in the presence of many similar-valued actions. Moreover, the dueling architecture enables our RL agent to outperform the state-of-the-art on the Atari 2600 domain.
+**These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit).
 
-- [Prioritized experience replay](https://arxiv.org/abs/1511.05952)
-> Experience replay lets online reinforcement learning agents remember and reuse experiences from the past. In prior work, experience transitions were uniformly sampled from a replay memory. However, this approach simply replays transitions at the same frequency that they were originally experienced, regardless of their significance. In this paper we develop a framework for prioritizing experience, so as to replay important transitions more frequently, and therefore learn more efficiently. We use prioritized experience replay in Deep Q-Networks (DQN), a reinforcement learning algorithm that achieved human-level performance across many Atari games. DQN with prioritized experience replay achieves a new state-of-the-art, outperforming DQN with uniform replay on 41 out of 49 games.
+### Lic<b>ensing, Authors, Acknowledgements <a name=" Licensing, Authors, Acknowledgements"></a>
+<b> Author:</b> Debjani Bhowmick
+  
+<b> Acknowledgements: </b>Udacity for providing an amazing Data Science Nanodegree Program
 
 
-### Misc : Configuration used 
-
-This agent has been trained on the Udacity provided online workspace. This environment allows to use a Nvidia K80 GPU that is used for the training. (The headless / no visualization version of the Unity environment was thus used)
-
-My setup is a "Deep Learning Dev Box", and is basically a Linux GPU Server, running Docker containers (using Nvidia Docker 2), serving Jupyter Lab notebooks which are accessed remotely via a web interface (or a ssh connection) : unfortunately this setup does not seem suitable to run Unity ML agent, with the GPU and providing a display for for the agent (See [Unity docuementation](https://github.com/Unity-Technologies/ml-agents/blob/master/docs/Using-Docker.md) for more details)
