@@ -135,11 +135,11 @@ While this algorithm is already a simple yet effective choice, a challenge assoc
 
 #### Epsilon Greedy Algorithm
 
-The challenge outlined above can be addressed using the **𝛆-greedy algorithm**, and we implement it next in the project. This algorithm allows the agent to systematically manage the exploration vs. exploitation trade-off. The agent "explores" by picking a random action with some probability epsilon `𝛜`. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜).
+The challenge outlined above can be addressed using the **𝛆-greedy algorithm**, and we implement it next in the project. With this approach, our agent can systematically manage the exploration vs. exploitation trade-off. The agent "explores" by picking a random action with some probability epsilon `𝛜`. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜).
 
-Furthermore, the value of epsilon is purposely decayed over time, so that the agent favors exploration during its initial interactions with the environment, but increasingly favors exploitation as it gains more experience. The starting and ending values for epsilon, and the rate at which it decays are three hyperparameters that are later tuned during experimentation.
+The value of epsilon is slowly reduced over time. Thus, while the agent favors exploration in the early stages of its learning process, it tends to favor exploitation as it gains more experience. The starting and ending values for epsilon, and the rate at which it decays are three hyperparameters that are later tuned during experimentation.
 
-You can find the 𝛆-greedy logic implemented as part of the `agent.act()` method [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/agent/agent.py#L66) in `agent.py` of the source code.
+For details related to the logic behind 𝛆-greedy approach, see `agent.act()` method [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/agent/agent.py#L66) in `agent.py` of the source code.
 
 
 #### Deep Q-Network (DQN)
@@ -172,19 +172,20 @@ We can address this issue using Double Q-Learning, where one set of parameters `
 The DDQN implementation can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/agent/agent.py#L96) in the `agent.py` file of the source code.
 
 
-#### Dueling Agents
-Dueling networks utilize two streams: one that estimates the state value function `V(s)`, and another that estimates the advantage for each action `A(s,a)`. These two values are then combined to obtain the desired Q-values.  
+#### Dueling Networks 
+
+The underlying idea of these networks is that they utilize two streams: one that estimates the state value function `V(s)`, and another that estimates the advantage for each action `A(s,a)`. These two values are then combined to obtain the desired Q-values.  
 
 <img src="images/dueling-networks-slide.png" width="60%" align="top-left" alt="" title="DDQN" />
 
-The reasoning behind this approach is that state values don't change much across actions, so it makes sense to estimate them directly. However, we still want to measure the impact that individual actions have in each state, hence the need for the advantage function.
+The reasoning behind this approach is that state values don't change much across actions, thus these could be estimated directly. However, the advantage function is used since we would like to measure the impact that individual actions have in each state.
 
 The dueling agents are implemented within the fully connected layers [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/model.py#L21) in the `model.py` file of the source code.
 
 
 ### Model parameters and results
 
-The agent uses the following parameters values (defined in dqn_agent.py)
+Details related to parameter values for used by the agent are stated below. These details can also be found in `dqn_agent.py` file of the code.
 
 ```
 BUFFER_SIZE = int(1e5)  # replay buffer size
@@ -196,7 +197,7 @@ UPDATE_EVERY = 4
 Optimizer : Adam
 ```
 
-The Neural Networks use the following architecture (defined in model.py):
+The employed neural networks in the implementation comprise the architecture as stated below, and this is defined in `model.py` of the code.
 
 ```
 Input nodes (37) -> Fully Connected Layer (64 nodes, Relu activation) -> Fully Connected Layer (64 nodes, Relu activation) -> Ouput nodes (4)
@@ -209,7 +210,7 @@ Given the chosen architecture and parameters, our results are :
 
 After the different components related to the algorithm have been set up and things are in place, the next goal is to measure the performance of our agent in the Banana environment. Performance is measured by the fewest number of episodes required to solve the environment.
 
-The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
+Details related to the full set of experiments are shown in the table below. As can be seen, these experiments compare different combinations of the components and hyperparameters discussed above. For all the experiments, agents utilize a replay buffer.
 
 <img src="images/experimentation_table.png" width="80%" align="top-left" alt="" title="experimentation_table" />
 
