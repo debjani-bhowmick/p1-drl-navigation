@@ -4,7 +4,6 @@
 1. [Description](Description])
 2. [Environment](Environment)
 3. [Getting Started](Getting_Started)
-   * [Dependencies](Dependencies)
    * [Installing](Installing)
    * [Executing Program](Executing_Program)
    * [File Description](File_Description)
@@ -85,11 +84,17 @@ You can run the `Navigation.ipynb` notebook in the project's directory to train 
 This project structure is divided into three directories:
 
 
-<b> models/model.py:</b> 
+<b> model.py:</b> 
 
-<b> agent/agent.py:</b>
+<b> dqn_agent.py:</b>
 
 <b> Navigation.ipynb:</b> notebook that will help you understand how the agent works step by step using different algorithms
+
+<b> folder:python:</b>
+
+<b> folder:chcekpoints:</b>
+
+<b>folder:Imgaes:</b>
 
 
 ### Establish Baseline <a name="Establish Baseline"></a>
