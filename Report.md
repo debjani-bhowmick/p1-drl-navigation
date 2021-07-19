@@ -17,7 +17,7 @@
 10. [Acknowledgement](Acknowledgement)
 
 ## Description
-This project and the associated code are meant to serve as an assignment project for the partial fulfilment of the Deep Reinforcement Learning Nanodegree.The project aim is to  **Train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**
+This report as well as the ssociated code are meant to serve as an assignment project for the partial fulfilment of Deep Reinforcement Learning Nanodegree hosted by Udacity.The goal of this project is to  **Train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**
 
 ![In Project 1, train an agent to navigate a large world.](images/banana_agent.gif)
 
