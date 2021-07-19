@@ -27,8 +27,7 @@ Before running the actual code, user needs to install the right dependencies in 
 
 Based on the exisiting policy, agents take action in the environment at that time step. The primary objective of the learning algorithm is to find an optimal policy&mdash;i.e., a policy that maximizes the reward for the agent. It is important to note that the set of possible actions are not known a priori, thus the optimal policy has to be discovered by interacting with the environment and recording observations. Therefore, the agent "learns" the policy through a process of trial-and-error that iteratively maps various environment states to the actions that yield the highest reward. This type of algorithm is called **Q-Learning**.
 
- We provide below details related to the motivation for this work, installation of the code, main findings etc below.
-
+ We further provide below the details related to the motivation for this work, instructions related to the installation of the code, experimental details and the main findings, among others. 
 
 ## Environment <a name="Environment"></a>
 
