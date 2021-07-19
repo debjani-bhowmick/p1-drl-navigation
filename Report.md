@@ -49,12 +49,12 @@ The state space has a dimension of 37 which contain velocity of the agent along 
 The task is episodic, and **in order to solve the environment, the agent must get an average score of +16 over 100 consecutive episodes.**
 
 ## Getting Started <a name="Getting_Started"></a>
-### Step 1: Setup Environmnet : 
-please follow the instructions in the DRLND GitHub repository[https://github.com/udacity/deep-reinforcement-learning] to set up your Python environment. These instructions can be found in README.md at the root of the repository. By following these instructions, you will install PyTorch, the ML-Agents toolkit, and a few more Python packages required to complete the project.
+### Step 1: Setting up the Environment : 
+For details related to setting up the Python environment for this project, please follow the instructions provided in the DRLND GitHub repository[https://github.com/udacity/deep-reinforcement-learning]. These instructions can be found in README.md at the root of the repository. By following these instructions, user will be able to install the required PyTorch library, the ML-Agents toolkit, and a few more Python packages required for this project.
 
-(For Windows users) The ML-Agents toolkit supports Windows 10. While it might be possible to run the ML-Agents toolkit using other versions of Windows, it has not been tested on other versions. Furthermore, the ML-Agents toolkit has not been tested on a Windows VM such as Bootcamp or Parallels.
+(For Windows users) The ML-Agents toolkit supports Windows 10 currently. In general, ML-Agents toolkit could possibly be used for other versions, however, it has not been tested officially, and we recommend choosing Windows 10. Also, the ML-Agents toolkit has not been tested on a Windows VM such as Bootcamp or Parallels.
 
-The specific files to look into in the repository is `python/setup.py and requiremnets.txt`.The readme is pretty clear to setup the environmnet
+Further, the specific files to look into in the repository is `python/setup.py and requiremnets.txt`.The readme is pretty clear to setup the environmnet
 
 ### Step 2: Download the Unity Environment
 For this project, you will not need to install Unity - this is because we have already built the environment for you, and you can download it from one of the links below. You need only select the environment that matches your operating system:
