@@ -212,15 +212,15 @@ Now that the various components of our algorithm are in place, it's time to meas
 
 The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
 
-<img src="images/experimentation_table.png" width="60%" align="top-left" alt="" title="DDQN" />
+<img src="images/experimentation_table.png" width="60%" align="top-left" alt="" title="experimentation_table" />
 
 ### 5. Select best performing agent
 
 The best performing agents were able to solve the environment in 200-250 episodes. While this set of agents included ones that utilized Double DQN and Dueling DQN, ultimately, the top performing agent was a simple DQN with replay buffer.
 
-![Score evolution during the training](images/DDQN_RB_Dueling_0.98_0.02.png)
+<img src="images/DDQN_RB_Dueling_0.98_0.02.png" width="60%" align="top-left" alt="" title="Score evolution during the training of DDQN_RB_Dueling_Agent" />
 
-**These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit).
+**These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit). This agent met the criteria with least iteration, so I choose it as best among others.
 
 ### Lic<b>ensing, Authors, Acknowledgements <a name=" Licensing, Authors, Acknowledgements"></a>
 <b> Author:</b> Debjani Bhowmick
