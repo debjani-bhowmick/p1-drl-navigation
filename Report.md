@@ -11,7 +11,7 @@
 4. [Establish Baseline Using A Random Action Policy](Establish_baseline_using_a_random_action_policy)
 5. [Description Of Algorithms Used](Description_of_algorithms_used)
 6. [Run Experiments to measure agent performance](Run_experiments_to_measure_agent_performance)
-7. [Select best performing agent and capture video of it navigating the environment](Select_best_performing_agent_and_capture_video_of_it_navigating_the_environment)
+7. [Select best performing agent](Select_best_performing_agent)
 8. [Authors](Authors)
 9. [License](License)
 10. [Acknowledgement](Acknowledgement)
