@@ -54,7 +54,7 @@ For details related to setting up the Python environment for this project, pleas
 
 (For Windows users) The ML-Agents toolkit supports Windows 10 currently. In general, ML-Agents toolkit could possibly be used for other versions, however, it has not been tested officially, and we recommend choosing Windows 10. Also, the ML-Agents toolkit has not been tested on a Windows VM such as Bootcamp or Parallels.
 
-Further, the specific files to look into in the repository is `python/setup.py and requiremnets.txt`.The readme is pretty clear to setup the environmnet
+Further, the specific files to look into in the repository is `python/setup.py and requiremnets.txt`. The readme provides thorough details related to setting up the environment.
 
 ### Step 2: Download the Unity Environment
 For this project, installing Unity is not required, rather a pre-built environment is readily available to download from one of the links provided below. Note that based on the operating system, the choice can differ, hence the version link needs to be used.
