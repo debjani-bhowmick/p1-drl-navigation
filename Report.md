@@ -207,7 +207,7 @@ Given the chosen architecture and parameters, our results are :
 
 ### 4. Run Experiments:
 
-Now that the various components of our algorithm are in place, it's time to measure the agent's performance within the Banana environment. Performance is measured by the fewest number of episodes required to solve the environment.
+After the different components related to the algorithm have been set up and things are in place, the next goal is to measure the performance of our agent in the Banana environment. Performance is measured by the fewest number of episodes required to solve the environment.
 
 The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
 
@@ -217,17 +217,15 @@ The table below shows the complete set of experiments. These experiments compare
 
 ### 5. Select best performing agent
 
-The best performing agents were able to solve the environment in 200-250 episodes. While this set of agents included ones that utilized Double DQN and Dueling DQN, ultimately, the top performing agent was a simple DQN with replay buffer.
+The best performing agents were able to achieve the desired goal in the provided environment in around 200-250 episodes. Although the overall set includes agents that utilized Double DQN and Dueling DQN, ultimately, best performance was achieved with a simple DQN with replay buffer.
 
 <img src="images/DDQN_RB_Dueling_0.98_0.02.png" width="60%" align="top-left" alt="" title="Score evolution during the training of DDQN_RB_Dueling_Agent" />
-
-
 
 **These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit). This agent met the criteria with least iteration, so I choose it as best among others.
 
 ### Lic<b>ensing, Authors, Acknowledgements <a name=" Licensing, Authors, Acknowledgements"></a>
 <b> Author:</b> Debjani Bhowmick
   
-<b> Acknowledgements: </b>Udacity for providing an amazing Data Science Nanodegree Program
+<b> Acknowledgements: </b>Author would like to thank Udacity for providing an amazing Data Science Nanodegree Program.
 
 
