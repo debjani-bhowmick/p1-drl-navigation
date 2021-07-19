@@ -54,10 +54,12 @@ Given this information, the agent has to learn how to best select actions. Four 
 The task is episodic, and **in order to solve the environment, the agent must get an average score of +16 over 100 consecutive episodes.**
 
 ## Getting Started <a name="Getting_Started"></a>
-### Step 1: Clone the DRLND Repository : 
-please follow the instructions in the DRLND GitHub repository to set up your Python environment. These instructions can be found in README.md at the root of the repository. By following these instructions, you will install PyTorch, the ML-Agents toolkit, and a few more Python packages required to complete the project.
+### Step 1: Setup Environmnet : 
+please follow the instructions in the DRLND GitHub repository[https://github.com/udacity/deep-reinforcement-learning] to set up your Python environment. These instructions can be found in README.md at the root of the repository. By following these instructions, you will install PyTorch, the ML-Agents toolkit, and a few more Python packages required to complete the project.
 
 (For Windows users) The ML-Agents toolkit supports Windows 10. While it might be possible to run the ML-Agents toolkit using other versions of Windows, it has not been tested on other versions. Furthermore, the ML-Agents toolkit has not been tested on a Windows VM such as Bootcamp or Parallels.
+
+The specific files to look into in the repository is `python/setup.py and requiremnets.txt`.The readme is pretty clear to setup the environmnet
 
 ### Step 2: Download the Unity Environment
 For this project, you will not need to install Unity - this is because we have already built the environment for you, and you can download it from one of the links below. You need only select the environment that matches your operating system:
@@ -69,16 +71,6 @@ Windows (64-bit): click here
 Then, place the file in the p1_navigation/ folder in the DRLND GitHub repository, and unzip (or decompress) the file.
 
 (For Windows users) Check out this link if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
-
-(For AWS) If you'd like to train the agent on AWS (and have not enabled a virtual screen), then please use this link to obtain the "headless" version of the environment. You will not be able to watch the agent without enabling a virtual screen, but you will be able to train the agent. (To watch the agent, you should follow the instructions to enable a virtual screen, and then download the environment for the Linux operating system above.)
-
-### Dependencies <a name=" Dependencies"></a>
-Python 3.5+ <br>
-Machine Learning Libraries: NumPy, SciPy
-Natural Language Process Libraries: NLTK <br>
-SQLlite Database Libraqries: SQLalchemy <br>
-Model Loading and Saving Library: Pickle <br>
-Web App and Data Visualization: Flask, Plotly <br>
 
 ### Installing <a name="Installing"></a>
 To clone the git repository:
@@ -220,11 +212,13 @@ Now that the various components of our algorithm are in place, it's time to meas
 
 The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
 
+<img src="images/experimentaion_table.png" width="60%" align="top-left" alt="" title="DDQN" />
+
 ### 5. Select best performing agent
 
 The best performing agents were able to solve the environment in 200-250 episodes. While this set of agents included ones that utilized Double DQN and Dueling DQN, ultimately, the top performing agent was a simple DQN with replay buffer.
 
-![Score evolution during the training](images/DDQN_RB.png)
+![Score evolution during the training](images/DDQN_RB_Dueling_0.98_0.02.png)
 
 **These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit).
 
