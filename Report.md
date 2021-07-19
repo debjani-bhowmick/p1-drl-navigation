@@ -19,7 +19,7 @@
 ## Description
 This project and the associated code are meant to serve as an assignment project for the partial fulfilment of the Deep Reinforcement Learning Nanodegree.The project aim is to  **Train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**
 
-![In Project 1, train an agent to navigate a large world.](images/navigation.gif)
+![In Project 1, train an agent to navigate a large world.](images/banana_agent.gif)
 
 In this setup the aegnt gets +1 when it collects a yellow banana and -1 when it collects blue ones. The reinforcement learning system actions are directed to wards maximizing cumulative scores thus, the agent tries to end up with a policy which says it’s better to avoid the blue ones and collect more yellows, by changing its actions on certain states.
 At first, in the notebook file, the dependencies are installed, libraries are imported, the simulation environment is initialized.
@@ -212,7 +212,7 @@ Now that the various components of our algorithm are in place, it's time to meas
 
 The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
 
-<img src="images/experimentaion_table.png" width="60%" align="top-left" alt="" title="DDQN" />
+<img src="images/experimentation_table.png" width="60%" align="top-left" alt="" title="DDQN" />
 
 ### 5. Select best performing agent
 
