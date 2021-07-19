@@ -79,17 +79,17 @@ To run the code, see `Navigation.ipynb` notebook in the project's directory. Det
 ### File Description <a name=" File_Description"></a>
 This project structure is divided into three directories:
 
-<b> model.py:</b> 
+<b> model.py:</b> Contains the neural network architecture.
 
-<b> dqn_agent.py:</b>
+<b> dqn_agent.py:</b> Contains the implementation of the DQN algorithm.
 
 <b> Navigation.ipynb:</b> IPython notebook designed to provide an understanding of how the agent works step by step using different algorithms.
 
-<b> folder:python:</b>
+<b> folder:python:</b> This folder has been directly copied from the original repository of Udacity Deep Reinforcement Learning Nanodegree, and contains the files related to installation and set up of the environment.
 
-<b> folder:checkpoints:</b>
+<b> folder:checkpoints:</b> Contains the models saved during training.
 
-<b>folder:Imgaes:</b>
+<b>folder:Images:</b> Contains screenshots of the results as well as additional images used for this document.
 
 
 ### Establish Baseline <a name="Establish Baseline"></a>
@@ -143,24 +143,26 @@ For details related to the logic behind 𝛆-greedy approach, see `agent.act()` 
 
 
 #### Deep Q-Network (DQN)
-With Deep Q-Learning, a deep neural network is used to approximate the Q-function. Given a network `F`, finding an optimal policy is a matter of finding the best weights `w` such that `F(s,a,w) ≈ Q(s,a)`.
 
-The neural network architecture used for this project can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/model.py#L5) in the `model.py` file of the source code. The network contains three fully connected layers with 64, 64, and 4 nodes respectively. Testing of bigger networks (more nodes) and deeper networks (more layers) did not produce better results.
+Deep Q-Learning involves the use of a deep neural network for approximating the Q-function. Given a network `F`, discovering the optimal policy in this case is equivalent to  finding the best weights `w` such that `F(s,a,w) ≈ Q(s,a)`.
+
+The neural network architecture used for this project can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/model.py#L5) in the `model.py` file of the source code. The network contains three fully connected layers with 64, 64, and 4 nodes respectively. In our experience, testing with bigger networks (more nodes) as well as deeper networks (more layers) did not produce better results.
 
 As for the network inputs, rather than feeding-in sequential batches of experience tuples, I randomly sample from a history of experiences using an approach called Experience Replay.
 
 
 #### Experience Replay
-Experience replay allows the RL agent to learn from past experience.
 
-Each experience is stored in a replay buffer as the agent interacts with the environment. The replay buffer contains a collection of experience tuples with the state, action, reward, and next state `(s, a, r, s')`. The agent then samples from this buffer as part of the learning step. Experiences are sampled randomly, so that the data is uncorrelated. This prevents action values from oscillating or diverging catastrophically, since a naive Q-learning algorithm could otherwise become biased by correlations between sequential experience tuples.
+With the experience replay incorporated, an RL agent is capable of learning from its past experience. 
 
-Also, experience replay improves learning through repetition. By doing multiple passes over the data, our agent has multiple opportunities to learn from a single experience tuple. This is particularly useful for state-action pairs that occur infrequently within the environment.
+Each experience is stored in a replay buffer as the agent interacts with the environment. The replay buffer contains a collection of experience tuples with the state, action, reward, and next state `(s, a, r, s')`. As part of the learning step, sampling is performed by the agent from this buffer. Sampling of experience is performed in a manner that the data is uncorrelated. This prevents action values from oscillating or diverging catastrophically, since a naive Q-learning algorithm could otherwise become biased by correlations between sequential experience tuples.
+
+Also, experience replay improves learning through repetition. Through multiple passes performed over the data, our agent has multiple opportunities to learn from a single experience tuple. This is particularly useful for state-action pairs that occur infrequently within the environment.
 
 The implementation of the replay buffer can be found [here](https://github.com/debjani-bhowmick/p1-drl-navigation/master/model/agent/agent.py#L133) in the `agent.py` file of the source code.
 
-
 #### Double Deep Q-Network (DDQN)
+
 One issue with Deep Q-Networks is they can overestimate Q-values (see [Thrun & Schwartz, 1993](https://www.ri.cmu.edu/pub_files/pub1/thrun_sebastian_1993_1/thrun_sebastian_1993_1.pdf)). The accuracy of the Q-values depends on which actions have been tried and which states have been explored. If the agent hasn't gathered enough experiences, the Q-function will end up selecting the maximum value from a noisy set of reward estimates. Early in the learning process, this can cause the algorithm to propagate incidentally high rewards that were obtained by chance (exploding Q-values). This could also result in fluctuating Q-values later in the process.
 
 <img src="images/overestimating-Q-values.png" width="50%" align="top-left" alt="" title="Overestimating Q-values" />
