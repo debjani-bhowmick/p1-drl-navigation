@@ -5,8 +5,8 @@
 1. [Description](Description])
 2. [Environment](Environment)
 3. [Getting Started](Getting_Started)
-   * [Installing](Installing)
-   * [Executing Program](Executing_Program)
+   * [Getting the Code](Installing)
+   * [Code Execution](Executing_Program)
    * [File Description](File_Description)
 4. [Establish Baseline Using A Random Action Policy](Establish_baseline_using_a_random_action_policy)
 5. [Description Of Algorithms Used](Description_of_algorithms_used)
@@ -67,24 +67,23 @@ After the environment is downloaded, place the file in the p1_navigation/ folder
 
 (For Windows users) To know whether you are using a 32-bit or a 64-bit machine, visit this [link](https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d).
 
-### Installing <a name="Installing"></a>
-To clone the git repository:
+### Getting the Code <a name="Installing"></a>
 
+This code is hosted on github and can be downloaded as a zip directly or through cloning the repository.To clone the git repository:
+ 
 ```[git clone debjani-bhowmick/p1-drl-navigation)](https://github.com/debjani-bhowmick/p1-drl-navigation)```
 
-### Executing Program <a name="Executing_Program"></a>
-You can run the `Navigation.ipynb` notebook in the project's directory to train model and save the model.
-
+### Code Execution <a name="Executing_Program"></a>
+To run the code, see `Navigation.ipynb` notebook in the project's directory. Details on training and saving the model are provided in this notebook. 
 
 ### File Description <a name=" File_Description"></a>
 This project structure is divided into three directories:
-
 
 <b> model.py:</b> 
 
 <b> dqn_agent.py:</b>
 
-<b> Navigation.ipynb:</b> notebook that will help you understand how the agent works step by step using different algorithms
+<b> Navigation.ipynb:</b> IPython notebook designed to provide an understanding of how the agent works step by step using different algorithms.
 
 <b> folder:python:</b>
 
@@ -95,7 +94,7 @@ This project structure is divided into three directories:
 
 ### Establish Baseline <a name="Establish Baseline"></a>
 
-Before building an agent that learns, I started by testing an agent that selects actions (uniformly) at random at each time step.
+To evaluate the performance of the agent, it is important that a suitable baseline is chosen. In this study, I started by testing an agent that selects actions (uniformly) at random at each time step.
 
 ```python
 env_info = env.reset(train_mode=False)[brain_name] # reset the environment
@@ -115,8 +114,7 @@ while True:
 print("Score: {}".format(score))
 ```
 
-Running this agent I got a score of zero. Obviously, if the agent needs to achieve an average score of 16 over 100 consecutive episodes, then choosing actions at random won't work.
-
+Based on this agent, I obtained a cumulative score of zero. Ideally, any score above this implies that the agent is performing better than the baseline of making random choices. Since our agent needs to achieve a score of at least 16 over 100 consecutive episodes, it is implied that smarter algorithms are needed and the random choices would not help. 
 
 ## Description of algorithms used <a name="Description of algorithms used"></a>
 
