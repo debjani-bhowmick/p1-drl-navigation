@@ -214,7 +214,7 @@ The table below shows the complete set of experiments. These experiments compare
 
 <img src="images/experimentation_table.png" width="60%" align="top-left" alt="" title="experimentation_table" />
 
-<img src="images/experimentation_table.png" width="67%" align="top-left" alt="" title="experimentation_table" />
+
 
 ### 5. Select best performing agent
 
@@ -222,7 +222,7 @@ The best performing agents were able to solve the environment in 200-250 episode
 
 <img src="images/DDQN_RB_Dueling_0.98_0.02.png" width="60%" align="top-left" alt="" title="Score evolution during the training of DDQN_RB_Dueling_Agent" />
 
-<img src="images/experimentation_table.png" width="67%" align="top-left" alt="" title="experimentation_table" />
+
 
 **These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit). This agent met the criteria with least iteration, so I choose it as best among others.
 
