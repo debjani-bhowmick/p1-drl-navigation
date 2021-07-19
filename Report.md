@@ -87,7 +87,7 @@ This project structure is divided into three directories:
 
 <b> folder:python:</b>
 
-<b> folder:chcekpoints:</b>
+<b> folder:checkpoints:</b>
 
 <b>folder:Imgaes:</b>
 
@@ -119,23 +119,23 @@ Based on this agent, I obtained a cumulative score of zero. Ideally, any score a
 ## Description of algorithms used <a name="Description of algorithms used"></a>
 
 #### Q-Function
-To discover an optimal policy, I setup a Q-function. The Q-function calculates the expected reward `R` for all possible actions `A` in all possible states `S`.
+To discover an optimal policy, a Q-function has been set up. The Q-function calculates the expected reward `R` for all possible actions `A` in all possible states `S`.
 
 <img src="assets/Q-function.png" width="19%" align="top-left" alt="" title="Q-function" />
 
-We can then define our optimal policy `π*` as the action that maximizes the Q-function for a given state across all possible states. The optimal Q-function `Q*(s,a)` maximizes the total expected reward for an agent starting in state `s` and choosing action `a`, then following the optimal policy for each subsequent state.
+The optimal policy `π*` for our case can then be defined as the action that maximizes the Q-function for a given state across all possible states. The optimal Q-function `Q*(s,a)` maximizes the total expected reward for an agent starting in state `s` and choosing action `a`, then following the optimal policy for each subsequent state.
 
 <img src="images/optimal-policy-equation.png" width="47%" align="top-left" alt="" title="Optimal Policy Equation" />
 
-In order to discount returns at future time steps, the Q-function can be expanded to include the hyperparameter gamma `γ`.
+For obtaining discounted returns at future time steps, the Q-function can be expanded to include the hyperparameter gamma `γ`.
 
 <img src="images/optimal-action-value-function.png" width="67%" align="top-left" alt="" title="Optimal Action Value Function" />
 
+While this algorithm is already a simple yet effective choice, a challenge associated with it is in choosing the right action to take while the agent is still learning the policy. Should the agent choose an action based on the Q-values observed thus far? Or, should the agent try a new action in hopes of earning a higher reward? This is known as the **exploration vs. exploitation dilemma**.
 
 #### Epsilon Greedy Algorithm
-One challenge with the Q-function above is choosing which action to take while the agent is still learning the optimal policy. Should the agent choose an action based on the Q-values observed thus far? Or, should the agent try a new action in hopes of earning a higher reward? This is known as the **exploration vs. exploitation dilemma**.
 
-To address this, I implemented an **𝛆-greedy algorithm**. This algorithm allows the agent to systematically manage the exploration vs. exploitation trade-off. The agent "explores" by picking a random action with some probability epsilon `𝛜`. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜).
+The challenge outlined above can be addressed using the **𝛆-greedy algorithm**, and we implement it next in the project. This algorithm allows the agent to systematically manage the exploration vs. exploitation trade-off. The agent "explores" by picking a random action with some probability epsilon `𝛜`. However, the agent continues to "exploit" its knowledge of the environment by choosing actions based on the policy with probability (1-𝛜).
 
 Furthermore, the value of epsilon is purposely decayed over time, so that the agent favors exploration during its initial interactions with the environment, but increasingly favors exploitation as it gains more experience. The starting and ending values for epsilon, and the rate at which it decays are three hyperparameters that are later tuned during experimentation.
 
