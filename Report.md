@@ -17,11 +17,11 @@
 10. [Acknowledgement](Acknowledgement)
 
 ## Description
-This report as well as the ssociated code are meant to serve as an assignment project for the partial fulfilment of Deep Reinforcement Learning Nanodegree hosted by Udacity.The goal of this project is to  **Train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**
+This report as well as the ssociated code are meant to serve as an assignment project for the partial fulfilment of Deep Reinforcement Learning Nanodegree hosted by Udacity.The goal of this project is to  **Train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**. An understanding of the environment in which the agent needs to operate is shown in the image below.
 
 ![In Project 1, train an agent to navigate a large world.](images/banana_agent.gif)
 
-In this setup the aegnt gets +1 when it collects a yellow banana and -1 when it collects blue ones. The reinforcement learning system actions are directed to wards maximizing cumulative scores thus, the agent tries to end up with a policy which says it’s better to avoid the blue ones and collect more yellows, by changing its actions on certain states.
+In the setup shown above, the agent is rewarded with a score of +1 whenever it successfully collects a yellow banana. However, it is also penalized with a score of -1 whenever it commits the error of collecting a blue banana. The reinforcement learning system actions are directed to wards maximizing cumulative scores thus, the agent tries to end up with a policy which says it’s better to avoid the blue ones and collect more yellows, by changing its actions on certain states.
 At first, in the notebook file, the dependencies are installed, libraries are imported, the simulation environment is initialized.
 The next step is to explore the State and Action Spaces. State space is a vector composed by 37 features including the agent's velocity, along with ray-based perception
 of objects around the agent's forward direction and, the action space, has a dimension of four (turn left and right, move forward and backward.
