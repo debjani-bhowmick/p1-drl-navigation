@@ -27,17 +27,17 @@ Before running the actual code, user needs to install the right dependencies in 
 
 Based on the exisiting policy, agents take action in the environment at that time step. The primary objective of the learning algorithm is to find an optimal policy&mdash;i.e., a policy that maximizes the reward for the agent. It is important to note that the set of possible actions are not known a priori, thus the optimal policy has to be discovered by interacting with the environment and recording observations. Therefore, the agent "learns" the policy through a process of trial-and-error that iteratively maps various environment states to the actions that yield the highest reward. This type of algorithm is called **Q-Learning**.
 
- We further provide below the details related to the motivation for this work, instructions related to the installation of the code, experimental details and the main findings, among others. 
+ We further provide below the details related to the choice of environment, details related to its setup, instructions related to the installation of the code, experimental details and the main findings, among others. 
 
 ## Environment <a name="Environment"></a>
 
-The environment is based on [Unity ML-agents](https://github.com/Unity-Technologies/ml-agents)
+The environment used in this project is based on [Unity ML-agents](https://github.com/Unity-Technologies/ml-agents)
 
-Note: The project environment provided by Udacity is similar to, but not identical to the Banana Collector environment on the Unity ML-Agents GitHub page.
+Note: We point out here that the environment used in the project provided by Udacity is similar to, but not identical to the Banana Collector environment on the Unity ML-Agents GitHub page.
 
 > The Unity Machine Learning Agents Toolkit (ML-Agents) is an open-source Unity plugin that enables games and simulations to serve as environments for training intelligent agents. Agents can be trained using reinforcement learning, imitation learning, neuroevolution, or other machine learning methods through a simple-to-use Python API. 
 
-A reward of +1 is provided for collecting a yellow banana, and a reward of -1 is provided for collecting a blue banana. Thus, the goal of the agent is to collect as many yellow bananas as possible while avoiding blue bananas.
+A stated earlier, the environment rewards a score of +1 whenever a yelloe banana is collected, and an adverse reward of -1 is provided for whenever collecting a blue banana. The goal of the problem is to maximum the overall cumulative score, which implies collecting maximum possible number of yellow bananas while minimizing the collection of blue bananas as much as possible. 
 
 The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around the agent's forward direction. 
 
