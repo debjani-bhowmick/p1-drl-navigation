@@ -211,7 +211,7 @@ After the different components related to the algorithm have been set up and thi
 
 The table below shows the complete set of experiments. These experiments compare different combinations of the components and hyperparameters discussed above. However, note that all agents utilized a replay buffer.
 
-<img src="images/experimentation_table.png" width="60%" align="top-left" alt="" title="experimentation_table" />
+<img src="images/experimentation_table.png" width="80%" align="top-left" alt="" title="experimentation_table" />
 
 
 
