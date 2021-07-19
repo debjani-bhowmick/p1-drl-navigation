@@ -57,15 +57,15 @@ For details related to setting up the Python environment for this project, pleas
 Further, the specific files to look into in the repository is `python/setup.py and requiremnets.txt`.The readme is pretty clear to setup the environmnet
 
 ### Step 2: Download the Unity Environment
-For this project, you will not need to install Unity - this is because we have already built the environment for you, and you can download it from one of the links below. You need only select the environment that matches your operating system:
+For this project, installing Unity is not required, rather a pre-built environment is readily available to download from one of the links provided below. Note that based on the operating system, the choice can differ, hence the version link needs to be used.
 
 Linux: click here
 Mac OSX: click here
 Windows (32-bit): click here
 Windows (64-bit): click here
-Then, place the file in the p1_navigation/ folder in the DRLND GitHub repository, and unzip (or decompress) the file.
+After the environment is downloaded, place the file in the p1_navigation/ folder in the DRLND GitHub repository, and unzip (or decompress) the file.
 
-(For Windows users) Check out this link if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
+(For Windows users) To know whether you are using a 32-bit or a 64-bit machine, visit this [link](https://support.microsoft.com/en-us/windows/32-bit-and-64-bit-windows-frequently-asked-questions-c6ca9541-8dce-4d48-0415-94a3faa2e13d).
 
 ### Installing <a name="Installing"></a>
 To clone the git repository:
