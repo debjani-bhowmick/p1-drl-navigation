@@ -39,9 +39,7 @@ Note: We point out here that the environment used in the project provided by Uda
 
 A stated earlier, the environment rewards a score of +1 whenever a yelloe banana is collected, and an adverse reward of -1 is provided for whenever collecting a blue banana. The goal of the problem is to maximum the overall cumulative score, which implies collecting maximum possible number of yellow bananas while minimizing the collection of blue bananas as much as possible. 
 
-The state space has 37 dimensions and contains the agent's velocity, along with ray-based perception of objects around the agent's forward direction. 
-
-Given this information, the agent has to learn how to best select actions. Four discrete actions are available, corresponding to:
+The state space has a dimension of 37 which contain velocity of the agent along with information on ray-based perception of objects around the agent's forward direction. Based on this information, the goal for the agent is to learn to select the best actions. There are 4 discrete choices of actions available to the agent, and these can be stated as
 
 - 0 - move forward.
 - 1 - move backward.
