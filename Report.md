@@ -1,29 +1,38 @@
-# Train an RL Agent to Collect Bananas
-## Udacity Deep Reinforcement Learning Nanodegree Project 1: Navigation
-
-## Project's goal
-
-In this project, **the goal is to train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**
-
-![In Project 1, train an agent to navigate a large world.](images/navigation.gif)
+# Udacity Deep Reinforcement Learning Nanodegree Project 1: Navigation
 
 ## Table of Contents
-1. [Description Of The Environment](Description Of The Environment)
-2. [Getting Started](Getting_Started)
+1. [Description](Description])
+2. [Environment](Environment)
+3. [Getting Started](Getting_Started)
    * [Dependencies](Dependencies)
    * [Installing](Installing)
    * [Executing Program](Executing_Program)
    * [File Description](File_Description)
-3. [Establish Baseline Using A Random Action Policy](Establish_baseline_using_a_random_action_policy)
-4. [Description Of Algorithms Used](Description_of_algorithms_used)
-5. [Run Experiments to measure agent performance](Run_experiments_to_measure_agent_performance)
-6. [Select best performing agent and capture video of it navigating the environment](Select_best_performing_agent_and_capture_video_of_it_navigating_the_environment)
-7. [Authors](Authors)
-8. [License](License)
-9. [Acknowledgement](Acknowledgement)
+4. [Establish Baseline Using A Random Action Policy](Establish_baseline_using_a_random_action_policy)
+5. [Description Of Algorithms Used](Description_of_algorithms_used)
+6. [Run Experiments to measure agent performance](Run_experiments_to_measure_agent_performance)
+7. [Select best performing agent and capture video of it navigating the environment](Select_best_performing_agent_and_capture_video_of_it_navigating_the_environment)
+8. [Authors](Authors)
+9. [License](License)
+10. [Acknowledgement](Acknowledgement)
+
+## Description
+This project and the associated code are meant to serve as an assignment project for the partial fulfilment of the Deep Reinforcement Learning Nanodegree.The project aim is to  **Train an agent to navigate a virtual world and collect as many yellow bananas as possible while avoiding blue bananas**
+
+![In Project 1, train an agent to navigate a large world.](images/navigation.gif)
+
+In this setup the aegnt gets +1 when it collects a yellow banana and -1 when it collects blue ones. The reinforcement learning system actions are directed to wards maximizing cumulative scores thus, the agent tries to end up with a policy which says it’s better to avoid the blue ones and collect more yellows, by changing its actions on certain states.
+At first, in the notebook file, the dependencies are installed, libraries are imported, the simulation environment is initialized.
+The next step is to explore the State and Action Spaces. State space is a vector composed by 37 features including the agent's velocity, along with ray-based perception
+of objects around the agent's forward direction and, the action space, has a dimension of four (turn left and right, move forward and backward.
+To learn how the Python API controls the agent and receives the feedbacks from the environment, a code cell is provided with a random action agent.
+
+Agents use a policy to decide which actions to take within an environment. The primary objective of the learning algorithm is to find an optimal policy&mdash;i.e., a policy that maximizes the reward for the agent. Since the effects of possible actions aren't known in advance, the optimal policy must be discovered by interacting with the environment and recording observations. Therefore, the agent "learns" the policy through a process of trial-and-error that iteratively maps various environment states to the actions that yield the highest reward. This type of algorithm is called **Q-Learning**.
+
+ We provide below details related to the motivation for this work, installation of the code, main findings etc below.
 
 
-## Description of the Environment <a name="Description of the Environment"></a>
+## Environment <a name="Environment"></a>
 
 The environment is based on [Unity ML-agents](https://github.com/Unity-Technologies/ml-agents)
 
@@ -45,10 +54,27 @@ Given this information, the agent has to learn how to best select actions. Four 
 The task is episodic, and **in order to solve the environment, the agent must get an average score of +16 over 100 consecutive episodes.**
 
 ## Getting Started <a name="Getting_Started"></a>
+### Step 1: Clone the DRLND Repository : 
+please follow the instructions in the DRLND GitHub repository to set up your Python environment. These instructions can be found in README.md at the root of the repository. By following these instructions, you will install PyTorch, the ML-Agents toolkit, and a few more Python packages required to complete the project.
+
+(For Windows users) The ML-Agents toolkit supports Windows 10. While it might be possible to run the ML-Agents toolkit using other versions of Windows, it has not been tested on other versions. Furthermore, the ML-Agents toolkit has not been tested on a Windows VM such as Bootcamp or Parallels.
+
+### Step 2: Download the Unity Environment
+For this project, you will not need to install Unity - this is because we have already built the environment for you, and you can download it from one of the links below. You need only select the environment that matches your operating system:
+
+Linux: click here
+Mac OSX: click here
+Windows (32-bit): click here
+Windows (64-bit): click here
+Then, place the file in the p1_navigation/ folder in the DRLND GitHub repository, and unzip (or decompress) the file.
+
+(For Windows users) Check out this link if you need help with determining if your computer is running a 32-bit version or 64-bit version of the Windows operating system.
+
+(For AWS) If you'd like to train the agent on AWS (and have not enabled a virtual screen), then please use this link to obtain the "headless" version of the environment. You will not be able to watch the agent without enabling a virtual screen, but you will be able to train the agent. (To watch the agent, you should follow the instructions to enable a virtual screen, and then download the environment for the Linux operating system above.)
 
 ### Dependencies <a name=" Dependencies"></a>
 Python 3.5+ <br>
-Machine Learning Libraries: NumPy, SciPy, Pandas, Sciki-Learn <br>
+Machine Learning Libraries: NumPy, SciPy
 Natural Language Process Libraries: NLTK <br>
 SQLlite Database Libraqries: SQLalchemy <br>
 Model Loading and Saving Library: Pickle <br>
@@ -100,21 +126,6 @@ Running this agent I got a score of zero. Obviously, if the agent needs to achie
 
 
 ## Description of algorithms used <a name="Description of algorithms used"></a>
-
-### Preparation 
-The scores are distributed like follows: +1 each time the agent collects a yellow banana and -1 when it collects blue ones. The reinforcement learning system actions are directed to wards maximizing cumulative scores thus, the agent ends up learning that, to achieve this, it’s better to avoid the blue ones and collect more yellows, by changing its actions on certain states.
-At first, in the notebook file, the dependencies are installed, libraries are imported, the simulation environment is initialized.
-The next step is to explore the State and Action Spaces. State space is a vector composed by 37 features including the agent's velocity, along with ray-based perception
-of objects around the agent's forward direction and, the action space, has a dimension of four (turn left and right, move forward and backward.
-To learn how the Python API controls the agent and receives the feedbacks from the environment, a code cell is provided with a random action agent.
-
-
-Agents use a policy to decide which actions to take within an environment. The primary objective of the learning algorithm is to find an optimal policy&mdash;i.e., a policy that maximizes the reward for the agent. Since the effects of possible actions aren't known in advance, the optimal policy must be discovered by interacting with the environment and recording observations. Therefore, the agent "learns" the policy through a process of trial-and-error that iteratively maps various environment states to the actions that yield the highest reward. This type of algorithm is called **Q-Learning**.
-
-As for constructing the Q-Learning algorithm, the general approach is to implement a handful of different components, then run a series of tests to determine which combination of components and which hyperparameters yield the best results.
-
-In the following sections, we'll describe each component of the algorithm in detail.
-
 
 #### Q-Function
 To discover an optimal policy, I setup a Q-function. The Q-function calculates the expected reward `R` for all possible actions `A` in all possible states `S`.
