@@ -229,9 +229,11 @@ The best performing agents were able to achieve the desired goal in the provided
 
 ### 6. Future improvemnet ideas:
 
-#### Test the replay buffer — Here in this project all agents were trained with replay buffer, so as of now there is no scope to understand the effect of replay buffer. It would be nice to keep it optional while coding to check the impact the replay buffer on the performance.
+#### Test the replay buffer 
+  Here in this project all agents were trained with replay buffer, so as of now there is no scope to understand the effect of replay buffer. It would be nice to keep it optional while coding to check the impact the replay buffer on the performance.
 
-#### Add prioritized experience replay —  Prioritized replay selects experiences based on a priority value that is proportinal to the error. This can improve learning by increasing the probability of rare instances by sampling important experience vectors.
+#### Add prioritized experience replay 
+  Prioritized replay selects experiences based on a priority value that is proportinal to the error. This can improve learning by increasing the probability of rare instances by sampling important experience vectors.
 
 
 ### Lic<b>ensing, Authors, Acknowledgements <a name=" Licensing, Authors, Acknowledgements"></a>
