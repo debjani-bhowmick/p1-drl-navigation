@@ -220,11 +220,19 @@ Details related to the full set of experiments are shown in the table below. As 
 
 ### 5. Select best performing agent
 
-The best performing agents were able to achieve the desired goal in the provided environment in around 200-250 episodes. Although the overall set includes agents that utilized Double DQN and Dueling DQN, ultimately, best performance was achieved with a simple DQN with replay buffer.
+The best performing agents were able to achieve the desired goal in the provided environment in around 400-500 episodes. Although the overall set includes agents that utilized Double DQN and Dueling DQN, ultimately, best performance was achieved with a combined model of Double DQN with replay buffer and dueling (Epsilon decay: 0.98 and epsilon end = 0.02).
 
 <img src="images/DDQN_RB_Dueling_0.98_0.02.png" width="60%" align="top-left" alt="" title="Score evolution during the training of DDQN_RB_Dueling_Agent" />
 
 **These results meets the project's expectation as the agent is able to receive an average reward (over 100 episodes) of at least +13 ( I kept 16 as limit). This agent met the criteria with least iteration, so I choose it as best among others.
+
+
+### 6. Future improvemnet ideas:
+
+#### Test the replay buffer — Here in this project all agents were trained with replay buffer, so as of now there is no scope to understand the effect of replay buffer. It would be nice to keep it optional while coding to check the impact the replay buffer on the performance.
+
+#### Add prioritized experience replay —  Prioritized replay selects experiences based on a priority value that is proportinal to the error. This can improve learning by increasing the probability of rare instances by sampling important experience vectors.
+
 
 ### Lic<b>ensing, Authors, Acknowledgements <a name=" Licensing, Authors, Acknowledgements"></a>
 <b> Author:</b> Debjani Bhowmick
