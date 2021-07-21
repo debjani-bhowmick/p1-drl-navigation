@@ -220,7 +220,7 @@ Details related to the full set of experiments are shown in the table below. As 
 
 ### 5. Select best performing agent
 
-The best performing agents were able to achieve the desired goal in the provided environment in around 400-500 episodes. Although the overall set includes agents that utilized Double DQN and Dueling DQN, ultimately, best performance was achieved with a combined model of Double DQN with replay buffer and dueling (Epsilon decay: 0.98 and epsilon end = 0.02).
+The best performing agents were able to achieve the desired goal in the provided environment in around 400-500 episodes. Although the overall set includes agents that utilized Double DQN and Dueling DQN, ultimately, best performance was achieved with a combined agent using Double DQN with replay buffer and Dueling (setup: Epsilon decay: 0.98 and epsilon end = 0.02).
 
 <img src="images/DDQN_RB_Dueling_0.98_0.02.png" width="60%" align="top-left" alt="" title="Score evolution during the training of DDQN_RB_Dueling_Agent" />
 
